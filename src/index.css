@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* Neon Bio-Tech Palette */
+  --color-dna-teal: #00f2fe; /* T-Cells */
+  --color-bcell-gold: #fbbf24; /* B-Cells */
+  --color-rna-violet: #8b5cf6; /* Monocytes? */
+  --color-void-black: #020617; /* Deep Background */
+  --color-glass-slate: #1e293b; /* Component Backgrounds */
+
+  --font-sans: "Inter", "system-ui", "sans-serif";
+}
+
+:root {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+* {
+  font-family: inherit;
+}
