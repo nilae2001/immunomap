@@ -1,7 +1,7 @@
 export const getIdentity = (genes: Record<string, number>) => {
   const t = 0.5;
 
-  // 1. Megakaryocytes
+  // 1. megakaryocytes
   if (genes["PPBP"] > t || genes["PF4"] > t)
     return {
       name: "Megakaryocytes",
@@ -9,7 +9,7 @@ export const getIdentity = (genes: Record<string, number>) => {
       reason: "Platelet markers detected",
     };
 
-  // 2. B-Lymphocytes (Strict check)
+  // 2. b-lymphocytes (strict check)
   if (genes["MS4A1"] > t || genes["CD19"] > t || genes["CD79A"] > t) {
     return {
       name: "B-Lymphocytes",
@@ -18,8 +18,8 @@ export const getIdentity = (genes: Record<string, number>) => {
     };
   }
 
-  // 3. Dendritic Cells (The "Finicky" logic)
-  // Logic: Must be an APC (HLA-DRA) but NOT a B-cell (already checked) and NOT a Monocyte (LYZ check)
+  // 3. dendritic cells (the "finicky" logic)
+  // must be an APC (HLA-DRA) but NOT a B-cell (already checked) and NOT a Monocyte (LYZ check)
   const isDendritic =
     genes["FCER1A"] > 0.3 ||
     (genes["HLA-DRA"] > 1.8 && genes["LYZ"] < 0.8 && genes["S100A8"] < 0.8);
@@ -35,7 +35,7 @@ export const getIdentity = (genes: Record<string, number>) => {
     };
   }
 
-  // 4. Monocytes
+  // 4. monocytes
   if (genes["CD14"] > t || genes["LYZ"] > 1.2 || genes["S100A8"] > 1.2) {
     return {
       name: "Monocytes",
@@ -44,7 +44,7 @@ export const getIdentity = (genes: Record<string, number>) => {
     };
   }
 
-  // 5. NK Cells
+  // 5. nk Cells
   const nkScore = (genes["NKG7"] > t ? 1 : 0) + (genes["GNLY"] > t ? 1 : 0);
   if (nkScore >= 2 && (genes["CD3E"] || 0) < t) {
     return {
@@ -54,8 +54,8 @@ export const getIdentity = (genes: Record<string, number>) => {
     };
   }
 
-  // 6. T-Lymphocytes (The "Purified" Check)
-  // Only classify as T if it has T markers AND isn't showing B/Myeloid signals
+  // 6. t-Lymphocytes (The "purified" check)
+  // only classify as T if it has T markers AND isn't showing B/Myeloid signals
   if (genes["CD3E"] > t || genes["CD3D"] > t) {
     const isActuallyT = genes["MS4A1"] < t && genes["LYZ"] < 1.0;
 
