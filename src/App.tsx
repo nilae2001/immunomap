@@ -48,7 +48,7 @@ function App() {
     100
   ).toFixed(1);
   return (
-    <MantineProvider defaultColorScheme="dark">
+    <MantineProvider defaultColorScheme="dark" forceColorScheme="dark">
       <div className="bg-void-black min-h-screen text-slate-200">
         <Header />
 

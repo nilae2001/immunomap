@@ -21,6 +21,7 @@ export default function AboutModal({ opened, onClose }: AboutModalProps) {
       title="System Intelligence: IMMUNOMAP v4.0"
       centered
       size="lg"
+      lockScroll={false}
       overlayProps={{ backgroundOpacity: 0.6, blur: 3 }}
     >
       <Stack gap="md">
@@ -31,7 +32,7 @@ export default function AboutModal({ opened, onClose }: AboutModalProps) {
         </Text>
 
         <Divider label="The Pipeline" labelPosition="center" />
-        <Text size="xs" c="dimmed">
+        <Text size="xs">
           The data was processed using <span className="font-bold">Python</span>{" "}
           in an <span className="font-bold">Anaconda</span> environment. I used{" "}
           <span className="font-bold">Scanpy</span> to perform quality control,
@@ -56,7 +57,7 @@ export default function AboutModal({ opened, onClose }: AboutModalProps) {
         </Group>
 
         <Divider label="The Markers" labelPosition="center" />
-        <Text size="xs" c="dimmed" lh={1.5}>
+        <Text size="xs" lh={1.8}>
           The system tracks an expanded suite of canonical lineage markers,
           including Pan-T markers (CD3E, CD3D), B-cell regulators (CD19, MS4A1,
           CD79A), and myeloid-specific transcripts (CD14, LYZ). These genes

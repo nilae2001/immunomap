@@ -16,8 +16,17 @@
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  --void-black: #020617;
 }
 
 * {
   font-family: inherit;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+[data-mantine-color-scheme="dark"] {
+  --mantine-color-body: var(--void-black);
 }

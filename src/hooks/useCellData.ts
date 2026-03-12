@@ -5,7 +5,7 @@ export function useCellData() {
   const [cells, setCells] = useState<Cell[]>([]);
 
   useEffect(() => {
-    fetch("/cells.json")
+    fetch("./cells.json")
       .then((res) => res.json())
       .then((data) => setCells(data));
   }, []);

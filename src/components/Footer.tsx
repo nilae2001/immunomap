@@ -18,7 +18,7 @@ export const Footer = () => {
         </Group>
 
         <Text size="xs" c="dimmed" mt={40} ta="center">
-          © {new Date().getFullYear()} ImmunoMap Project. For research use only.
+          © {new Date().getFullYear()} Nila Erturk. For research use only.
         </Text>
       </Container>
     </Box>
