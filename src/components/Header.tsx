@@ -51,7 +51,12 @@ export const Header = () => {
             >
               <IconInfoCircle size={22} />
             </ActionIcon>
-            <Anchor href="#" c="dna-teal" size="sm" fw={700}>
+            <Anchor
+              href="https://github.com/nilae2001/immunomap"
+              c="dna-teal"
+              size="sm"
+              fw={700}
+            >
               GitHub
             </Anchor>
           </Group>

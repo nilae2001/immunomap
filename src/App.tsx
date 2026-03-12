@@ -1,13 +1,5 @@
 import { useRef, useState } from "react";
-import {
-  MantineProvider,
-  Stack,
-  Group,
-  Box,
-  Container,
-  Paper,
-  Text,
-} from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "./index.css";
 

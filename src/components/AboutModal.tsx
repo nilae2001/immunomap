@@ -57,10 +57,16 @@ export default function AboutModal({ opened, onClose }: AboutModalProps) {
 
         <Divider label="The Markers" labelPosition="center" />
         <Text size="xs" c="dimmed" lh={1.5}>
-          The genes tracked here (<b>CD3E, CD19, MS4A1, GNLY, CD14</b>) are
-          canonical lineage markers. They act as "biological ID cards" for T
-          cells, B cells, Monocytes, and NK cells, allowing us to validate that
-          our UMAP clusters represent real biological populations.
+          The system tracks an expanded suite of canonical lineage markers,
+          including Pan-T markers (CD3E, CD3D), B-cell regulators (CD19, MS4A1,
+          CD79A), and myeloid-specific transcripts (CD14, LYZ). These genes
+          function as "biological ID cards," allowing us to map the UMAP
+          coordinates back to high-confidence cell identities—from dominant
+          populations like T Cells and Monocytes to rare subsets like Dendritic
+          Cells (FCER1A) and Megakaryocytes (PPBP, PF4). By correlating these
+          genetic signatures with spatial clustering, we can validate that the
+          manifold represents distinct, functional biological populations rather
+          than stochastic noise.
         </Text>
 
         <Divider mt="md" />
