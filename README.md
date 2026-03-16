@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# 🧬 ImmunoMap v4.0
+### **High-Resolution Single-Cell Transcriptomics Explorer**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ImmunoMap** is an interactive manifold explorer designed to visualize the transcriptomic landscape of Peripheral Blood Mononuclear Cells (PBMCs). It bridges the gap between static bioinformatics pipelines and real-time data exploration, allowing researchers to validate cellular identities through dynamic lineage marker analysis.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 The Core Engine
 
-## React Compiler
+### **Bioinformatics Pipeline**
+The underlying data was processed via a custom **Scanpy** pipeline in an **Anaconda** environment:
+* **Quality Control:** Filtered for mitochondrial gene percentage and n_genes to remove dead cells and doublets.
+* **Normalization:** Log-normalized and scaled to 10k counts per cell.
+* **Dimensionality Reduction:** Principal Component Analysis (PCA) followed by **UMAP** (Uniform Manifold Approximation and Projection) for global topological preservation.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### **Frontend Architecture**
+* **D3-Quadtree Indexing:** Implemented spatial partitioning to handle sub-millisecond hover detection across thousands of data points.
+* **High-DPI Canvas Rendering:** Custom scaling logic to ensure ultra-sharp visualization on Retina/4K displays.
+* **Mantine UI:** A professional-grade component library for an "Intelligence System" aesthetic.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧬 Biological Lineage Panel
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The system tracks an expanded suite of **canonical markers** to resolve the PBMC landscape:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Lineage | Key Markers | Biological Identity |
+| :--- | :--- | :--- |
+| **T Cells** | `CD3E`, `CD3D`, `CD4`, `CD8A` | Pan-T, Helper, and Cytotoxic subsets |
+| **B Cells** | `CD19`, `MS4A1`, `CD79A` | B-cell receptor complex & maturation |
+| **Monocytes** | `CD14`, `LYZ`, `S100A8` | Classical and inflammatory myeloid cells |
+| **NK Cells** | `GNLY`, `NKG7`, `FCGR3A` | Cytolytic effector cells (Natural Killer) |
+| **Dendritic** | `FCER1A`, `HLA-DRA` | Professional antigen-presenting cells |
+| **Megakaryocytes** | `PPBP`, `PF4`, `GNG11` | Platelet progenitors (Rare populations) |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* **Frontend:** React 18, TypeScript, Mantine UI, TailwindCSS
+* **Visualization:** HTML5 Canvas, D3.js (Quadtree)
+* **Data Science:** Python, Scanpy, Pandas, NumPy
+* **Environment:** Anaconda / Conda
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## ⚡ Quick Start
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/nilae2001/immunomap.git
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run Dev Environment**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🧪 Scientific Logic
+
+In single-cell analysis, clusters can often be ambiguous. By providing a Dual-Gene Comparison tool and Dynamic Thresholding, ImmunoMap allows users to distinguish between:
+
+1. **Transitional States:** Identifying NKT cells (`CD3E+` & `GNLY+`).
+2. **Cluster Purity:** Validating that a cluster exclusively expresses its expected lineage markers.
+3. **Doublet Detection:** Catching technical artifacts where two different cell types share a single coordinate.
+
+---
+
+## 🔗 Links
+
+* **Live Demo:** [nilaerturk.com/immunomap](https://nilaerturk.com/immunomap)
+* **Portfolio:** [nilaerturk.com](https://nilaerturk.com)
